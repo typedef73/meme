@@ -60,28 +60,9 @@
             rickrollButton.style.display = 'none';
             rickrollVideo.style.display = 'block';
             rickrollVideo.controls = false; // Отключение элементов управления видео
-            rickrollVideo.play();		
+            rickrollVideo.play();	
 
-			increment();
         }
-		
-		function increment() {
-		  var xhr = new XMLHttpRequest();
-		  xhr.onreadystatechange = function() {
-			if (xhr.readyState === 4 && xhr.status === 200) {
-			  var counterResult = document.createElement('div');
-			  counterResult.textContent = xhr.responseText;
-			  counterResult.style.position = 'fixed';
-			  counterResult.style.top = '10px';
-			  counterResult.style.left = '10px';
-			  counterResult.style.color = '#fff';
-			  counterResult.style.fontWeight = 'bold';
-			  document.body.appendChild(counterResult);
-			}
-		  };
-		  xhr.open('GET', 'increment.php', true);
-		  xhr.send();
-		}
 		
     </script>
 </body>
