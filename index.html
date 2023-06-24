@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Не переходи сюда</title>
+	<style>
+        body {
+            background-image: url('https://i.ytimg.com/vi/wvQQuTuBbTs/maxresdefault.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .rickrollButton {
+            padding: 20px 40px;
+            background-color: #333;
+            color: #fff;
+            font-size: 24px;
+            border: none;
+            cursor: pointer;
+			border: 2px solid #fff; /* Белая обводка */
+        }
+
+        #rickrollVideo {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+<body>
+    <button class="rickrollButton" onclick="showVideo()">Не нажимай на меня</button>
+
+    <video id="rickrollVideo" width="700" height="500" controls>
+        <source src="https://cdn.mtdv.me/video/rick.mp4" type="video/mp4">
+        Ваш браузер не поддерживает воспроизведение видео.
+    </video>
+
+    <script>
+        function showVideo() {
+            var rickrollButton = document.querySelector('.rickrollButton');
+            var rickrollVideo = document.getElementById('rickrollVideo');
+            var body = document.querySelector('body');
+            var title = ['!!!', 'YOU', 'A', 'RICKROLLING'];
+            var currentTitle = 0;
+
+            setInterval(function() {
+                document.title = title[currentTitle];
+                currentTitle = (currentTitle + 1) % title.length;
+            }, 1000);
+
+            body.style.backgroundImage = "url('https://lumos.art/wp-content/uploads/2021/07/312123.jpg')";
+            rickrollButton.style.display = 'none';
+            rickrollVideo.style.display = 'block';
+            rickrollVideo.controls = false; // Отключение элементов управления видео
+            rickrollVideo.play();		
+
+			increment();
+        }
+		
+		function increment() {
+		  var xhr = new XMLHttpRequest();
+		  xhr.onreadystatechange = function() {
+			if (xhr.readyState === 4 && xhr.status === 200) {
+			  var counterResult = document.createElement('div');
+			  counterResult.textContent = xhr.responseText;
+			  counterResult.style.position = 'fixed';
+			  counterResult.style.top = '10px';
+			  counterResult.style.left = '10px';
+			  counterResult.style.color = '#fff';
+			  counterResult.style.fontWeight = 'bold';
+			  document.body.appendChild(counterResult);
+			}
+		  };
+		  xhr.open('GET', 'increment.php', true);
+		  xhr.send();
+		}
+		
+    </script>
+</body>
+</html>
